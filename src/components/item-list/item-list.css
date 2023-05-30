@@ -1,0 +1,18 @@
+.item-list {
+    display: block;
+    margin-bottom: 10px;
+    border-color: darkviolet;
+    border-width: thin;
+    border-style: solid;
+}
+.item-list .list-group-item {
+    cursor: pointer;
+    display: flex;
+}
+.item-list .list-group-item:hover {
+    background-color: hsl(178, 100%, 50%);
+}
+.item-list .search-panel {
+    display: flex;
+    flex: 1;
+}

@@ -1,0 +1,32 @@
+.item-details {
+    display: flex;
+    margin-top: 1rem;
+    flex-direction: row;
+    padding: 1rem;
+}
+.card-body {
+    border-color: darkviolet;
+    border-width: thin;
+    border-style: solid;
+}
+.item-details .item-image {
+    width: 30%;
+    height: 30%;
+    border-radius: 10px;
+}
+.list-group-item {
+    padding: .25rem; 
+}
+.list-group-item .term {
+    margin-right: 1rem;
+} 
+.list-group-item-bool {
+    padding: .25rem;
+}
+.list-group-item-bool .subscribeBool {
+    margin-right: 0.25rem;
+}
+.list-group-children {
+    list-style-type: none;
+}
+

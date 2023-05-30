@@ -1,0 +1,10 @@
+.btn-group .btn-info {
+    background-color: rgb(47, 241, 255);   
+    margin-right: 2px;
+    margin-bottom: 5px;
+}  
+.btn-group .btn-outline-secondary {
+    background-color: gainsboro;
+    margin-right: 2px;
+    margin-bottom: 5px;
+}
