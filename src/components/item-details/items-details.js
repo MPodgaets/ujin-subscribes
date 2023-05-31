@@ -33,9 +33,9 @@ const ItemDetails = (props) => {
     return (
         <React.Fragment>
             <div className="card-body">
-                <h4>
+                <h3>
                     {name}
-                </h4>
+                </h3>
                 <ul className="list-group-children">
                     {detailsChildren}
                 </ul>

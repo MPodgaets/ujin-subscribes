@@ -42,26 +42,32 @@ export default class LoginWindow extends Component {
         return (
             <div className="login">
                 {subscribes}
+                <h2>
+                    Ujin подписки
+                </h2>
+                <h4>
+                    Для просмотра Ваших подписок введите имя и пароль
+                </h4>
                 <label htmlFor="termLogin" 
                     className="user-label">
-                    Login
+                    Имя
                 </label>
                 <input type="text"
                     className="user-input"
                     id="termLogin"
-                    placeholder="type to login" 
+                    placeholder="введите имя" 
                     value = {this.state.login} 
                     onChange={this.onChangeLogin}/>
                 <p></p>
                 <p></p>
                 <label htmlFor="termPassword" 
                         className="password-label">
-                    Password
+                    Пароль
                 </label>
                 <input type="text"
                     className="password-input"
                     id="termPassword"
-                    placeholder="type to password" 
+                    placeholder="введите пароль" 
                     value = {this.state.password} 
                     onChange={this.onChangePassword}/>
                 <p></p>
