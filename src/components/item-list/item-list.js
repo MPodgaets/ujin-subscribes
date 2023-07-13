@@ -6,7 +6,6 @@ import './item-list.css';
 export default class ItemList extends Component { 
 
     state = {
-        filter: 'all',
         term: ''
     };
 
@@ -32,15 +31,11 @@ export default class ItemList extends Component {
           term: text
         });
     };
-    onFilterChange = (text) => {
-        this.setState({
-          filter: text
-        });
-    };
 
     render() {
-        const {data, onItemSelected, children:renderLabel} = this.props;  
-        const {term, filter} = this.state;
+        const {data, onItemSelected, filter, children:renderLabel, onFilterChange} = this.props;  
+        const {term} = this.state;
+
         const visibleItems = this.filter(this.search(data, term), filter); 
         const items = visibleItems.map((item) => {
             const label = renderLabel(item);
@@ -57,7 +52,7 @@ export default class ItemList extends Component {
             <div className="item-list">  
                 <SearchPanel onSearchText={this.onSearchChange}/>
                 <ItemStatusFilter filter={filter} 
-                    onFilterChange={this.onFilterChange}/>
+                    onFilterChange={onFilterChange}/>
                 <ol className="item-list list-group">
                     {items}
                 </ol> 

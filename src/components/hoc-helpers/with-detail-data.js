@@ -48,7 +48,7 @@ const withDetailData = (View, itemId) => {
                 this.updateItem();
             };
         };
-
+        //работает при нажатии на галочку включить
         toggleSubscribe = (e) => {
              this.setState(({data}) => {
                 const {on, ...rest} = data;
@@ -79,16 +79,26 @@ const withDetailData = (View, itemId) => {
 
             const content = hasData ? <View {...this.props} data={data} blob={blob} 
                                         detailsChildren={detailsChildren}/> : null;
+
+            //Кнопка оплатить становиться видимой при включении подписки
             const labelPay ='Оплатить'; 
             const btnPaySubscribe = (<button className="btn-pay"
                                         onClick={() => {paySubscribe(person, itemId);
                                             this.updateItem();}}>
                                         {labelPay}
-                                    </button>);    
+                                    </button>);   
 
             const {on, paid} = data;
-            const visiblePaySubscribe = on && !paid ? btnPaySubscribe : null;  
+            const visiblePaySubscribe = on && !paid ? btnPaySubscribe : null; 
+
             const labelSave = 'Записать';
+            const btnSaveSubscribe = (<button className="btn-save"
+                                        onClick={() => {saveSubscribe(person, data);
+                                            this.updateItem();}}>
+                                            {labelSave}
+                                     </button>); 
+            //Если подписка включена и оплачена, то она уже записана
+            const visibleSaveSubscribe = on && paid ? null : btnSaveSubscribe;
             //"item-details card"
             return (
                 <ErrorBoundry>
@@ -97,11 +107,7 @@ const withDetailData = (View, itemId) => {
                         {spinner}
                         {content}  
                         {visiblePaySubscribe}
-                        <button className="btn-save"
-                            onClick={() => {saveSubscribe(person, data);
-                                this.updateItem();}}>
-                                {labelSave}
-                        </button>
+                        {visibleSaveSubscribe}
                     </div>
                 </ErrorBoundry>        
             );

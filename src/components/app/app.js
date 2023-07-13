@@ -26,8 +26,15 @@ export default class App extends Component {
         person: null,
         idSubscribe: null,
         loading: false,
-        error: false
+        error: false,
+        filter: 'all'
     }
+
+    onFilterChange = (text) => {
+        this.setState({
+          filter: text
+        });
+    };
 
     onPersonLogin = (person) => {
         this.setState({
@@ -66,7 +73,7 @@ export default class App extends Component {
     
 
     render() {
-        const {person, idSubscribe} = this.state;
+        const {person, idSubscribe, filter} = this.state;
 
         return (  
             <ErrorBoundry>
@@ -82,7 +89,9 @@ export default class App extends Component {
                                     element={<SubscribeListPage 
                                                 person={person} 
                                                 onItemSelected={this.onItemSelected}
-                                                onExit={this.exitUser}/>}
+                                                onExit={this.exitUser}
+                                                filter={filter} 
+                                                onFilterChange={this.onFilterChange}/>}
                                 />
                                 <Route path="/subscribe/:id"
                                     element={<SubscribeDetailPage 

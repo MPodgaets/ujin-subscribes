@@ -6,7 +6,7 @@ export default class ItemStatusFilter extends Component {
   buttons = [
     {name: 'all', label: 'Все'},
     {name: 'on', label: 'Включено'},
-    {name: 'unpaid', label: 'Не оплачено'}
+    {name: 'unpaid', label: 'Включено, но не оплачено'}
   ];
 
   render() {
