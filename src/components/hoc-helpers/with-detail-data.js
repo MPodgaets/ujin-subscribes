@@ -33,7 +33,7 @@ const withDetailData = (View, itemId) => {
             const {person} = this.props;
             if (!itemId || !person) {
                 return;
-            }
+            } 
             this.props.getData(itemId, person)
                 .then(this.onItemLoaded)
                 .catch(this.onError);  

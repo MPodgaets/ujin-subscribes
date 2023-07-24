@@ -33,7 +33,7 @@ export default class ItemList extends Component {
     };
 
     render() {
-        const {data, onItemSelected, filter, children:renderLabel, onFilterChange} = this.props;  
+        const {data, filter, children:renderLabel, onFilterChange, onItemSelected} = this.props;  
         const {term} = this.state;
 
         const visibleItems = this.filter(this.search(data, term), filter); 

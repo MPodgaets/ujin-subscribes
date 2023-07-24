@@ -1,15 +1,11 @@
 /* eslint-disable no-undef */
 import React, {Component} from "react";
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Routes, useParams} from 'react-router-dom';
 
 import {SwapiServiceProvider} from '../swapi-service-context';
 import ErrorBoundry from '../error-boundry';
 import SwapiService from '../../services/test-swapi-service';
 
-/* import {
-    SubscribeDetail, 
-    SubscribeList
-} from '../sw-components'; */
 
 import {
     SubscribeDetailPage, 
@@ -20,11 +16,11 @@ import {
 import './app.css';
 
 export default class App extends Component {
+
     swapiService = new SwapiService();
 
     state = {
         person: null,
-        idSubscribe: null,
         loading: false,
         error: false,
         filter: 'all'
@@ -59,21 +55,13 @@ export default class App extends Component {
         return !error;
     }; 
 
-    onItemSelected = (idSubscribe) => {
-        this.setState({idSubscribe});
-    };
-
-    closeSubscribe = () => {
-        this.setState({idSubscribe: null});
-    };
-
     exitUser = () => {
         this.setState({person: null});
     };
     
 
     render() {
-        const {person, idSubscribe, filter} = this.state;
+        const {person, filter} = this.state;
 
         return (  
             <ErrorBoundry>
@@ -88,17 +76,15 @@ export default class App extends Component {
                                 <Route path="/subscribes"
                                     element={<SubscribeListPage 
                                                 person={person} 
-                                                onItemSelected={this.onItemSelected}
                                                 onExit={this.exitUser}
                                                 filter={filter} 
                                                 onFilterChange={this.onFilterChange}/>}
                                 />
                                 <Route path="/subscribe/:id"
-                                    element={<SubscribeDetailPage 
-                                                itemId={idSubscribe} 
-                                                person={person}
-                                                onBack={this.closeSubscribe} 
-                                                onExit={this.exitUser}/>} 
+                                    element={
+                                            <MatchPath 
+                                            person={person} 
+                                            onExit={this.exitUser}/>}
                                 />
                             </Routes>
                         </div>
@@ -107,4 +93,11 @@ export default class App extends Component {
             </ErrorBoundry> 
         );
     }
-}
+};
+
+function MatchPath({person, onBack, onExit}) {
+    const {id} = useParams(); 
+    return <SubscribeDetailPage itemId={id}
+                    person={person}
+                    onExit={onExit}/>;
+};

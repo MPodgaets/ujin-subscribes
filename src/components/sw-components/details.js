@@ -1,14 +1,13 @@
 import React from "react";
 import ItemDetails, {Record, BoolRecord} from "../item-details";
 import { withDetailData, withSwapiService } from '../hoc-helpers';
-import TestSwapiService from "../../services/test-swapi-service";
 
 const mapMethodToProps = (swapiService) => {
     return {
-        getData: swapiService.getDetailSubsrcibe,
+        getData: swapiService.getDetailSubscribe,
         getBlob: swapiService.getSubscribeBlob,
         saveSubscribe: swapiService.saveSubscribe,
-        paySubscribe: swapiService.payPersonSubscribe
+        paySubscribe: swapiService.payPersonSubscribe 
     };
 };
 

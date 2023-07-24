@@ -12,9 +12,9 @@ const withChildFunction = (Wrapped, fn) => {
         );
     };
 };
-
-const renderName = ({name}) => {
-    return (<Link to="/subscribe/:id">{name}</Link>);
+//return (<Link to={`/subscribe/${id}`} >{name}</Link>);
+const renderName = ({id, name}) => {
+    return (<p>{name}</p>);
 };
 
 const mapMethodToProps = (swapiService) => {
